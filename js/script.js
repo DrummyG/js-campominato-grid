@@ -3,7 +3,7 @@ const riga = document.querySelector('.row')
 let stage = document.getElementById('difficolta')
 const button = document.getElementById('button')
 const testo = document.querySelector('.inizio')
-const casella = document.getElementsByClassName('col')
+let colNum = 0
 
 // funzioni
 function nulla(){
@@ -14,53 +14,36 @@ function aggiunta(){
     riga.classList.add('height')
 }
 
-function easy(){
+function crea(){
     riga.innerHTML = ''
-    for(let i=1; i<=100; i++){
+    for(let i=1; i<=colNum; i++){
         riga.innerHTML += `
-        <div class="col easy">${i}</div>
+        <div class="col ${stage.value}">${i}</div>
         `
     }
     nulla()
     aggiunta()
 }
 
-function hard(){
-    riga.innerHTML = ''
-    for(let i=1; i<=81; i++){
-        riga.innerHTML += `
-        <div class="col hard">${i}</div>
-        `
-    }
-    nulla()
-    aggiunta()
-}
-
-function crazy(){
-    riga.innerHTML = ''
-    for(let i=1; i<=49; i++){
-        riga.innerHTML += `
-        <div class="col crazy">${i}</div>
-        `
-    }
-    nulla()
-    aggiunta()
-}
-
-
+// bottone
 button.addEventListener('click', function(){
     if(stage.value === 'Easy'){
-        easy()
+        colNum = 100
+        crea()
     }
     if(stage.value === 'Hard'){
-        hard()
+        colNum = 81
+        crea()
     }
     if(stage.value === 'Crazy'){
-        crazy()
+        colNum = 49
+        crea()
+    }
+    const casella = document.querySelectorAll('.col')
+    console.log(casella)
+    for(c=0; c<casella.length; c++){
+        casella[c].addEventListener('click', () => {
+            casella[c] 
+        })
     }
 })
-
-casella.addEventListener('click', function(){
-    casella.classList.add('back')
-})
-
