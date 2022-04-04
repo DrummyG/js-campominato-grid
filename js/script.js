@@ -40,10 +40,13 @@ button.addEventListener('click', function(){
         crea()
     }
     const casella = document.querySelectorAll('.col')
-    console.log(casella)
     for(c=0; c<casella.length; c++){
-        casella[c].addEventListener('click', () => {
-            casella[c] 
+        let d = c
+        casella[c].addEventListener('click', function(){
+           casella[d].classList.add('back')
+            console.log(casella[d])
         })
+        console.log(d)
+        
     }
 })
